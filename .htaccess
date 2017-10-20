@@ -1,0 +1,24 @@
+AddDefaultCharset UTF-8
+
+<IfModule mod_rewrite.c>
+     RewriteEngine On
+
+
+     RewriteCond ${REQUEST_URI} ^.+$
+RewriteCond %{REQUEST_FILENAME} \.(gif|jpe?g|png|js|css|swf|php|ico|txt|pdf|xml)$ [OR]
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+RewriteCond %{REQUEST_FILENAME} -l
+RewriteRule ^ - [L]
+
+
+
+
+    RewriteRule ^id([0-9]+)$ comments.php [QSA,L]
+    RewriteRule ^ip([0-9]+)$ pass/id [QSA,L]
+
+
+
+     RewriteRule ^(.*)$ index.php?_url=/$1 [QSA,L]
+
+</IfModule>
